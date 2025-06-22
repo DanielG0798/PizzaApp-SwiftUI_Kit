@@ -8,24 +8,18 @@
 import SwiftUI
 
 struct RatingsView: View {
-    @State private var rating: Int = Int.random(in: 1...5)
+    var rating: Int
     var body: some View {
         HStack{
             Text("Rating ")
             ForEach(1...5, id: \.self) {
-                idx in Image(systemName: idx <= rating ? "fork.knife.circle.fill" : "circle")
-                    .foregroundColor (idx <= rating ? .accentColor : .gray)
+                circle in Image(systemName: circle <= rating ? "fork.knife.circle.fill" : "circle")
             }
         }
-        .padding()
-                .onAppear {
-                    rating = Int.random(in: 1...5)
-                    print("Random rating: \(rating)")
-                }
     }
 }
 
 
 #Preview {
-    RatingsView()
+    RatingsView(rating: 4)
 }
